@@ -1040,6 +1040,8 @@ void tool_change(const uint8_t new_tool, bool no_move/*=false*/) {
       DEBUG_ECHOLNPAIR("Offset Tool XYZ by { ", diff.x, ", ", diff.y, ", ", diff.z, " }");
       current_position += diff;
 
+      WRITE(PISTON1, HIGH);
+      WRITE(PISTON2, HIGH);
       // Tell the planner the new "current position"
       sync_plan_position();
 
@@ -1133,6 +1135,12 @@ void tool_change(const uint8_t new_tool, bool no_move/*=false*/) {
               if (toolchange_settings.enable_park) do_blocking_move_to_xy_z(destination, destination.z, MMM_TO_MMS(TOOLCHANGE_PARK_XY_FEEDRATE));
             #else
               do_blocking_move_to_xy(destination, planner.settings.max_feedrate_mm_s[X_AXIS]);
+              if(TEST(axis_homed, X_AXIS) && TEST(axis_homed, Y_AXIS) && TEST(axis_homed, Z_AXIS)){
+                if(active_extruder == 0)
+                  WRITE(PISTON1, LOW);
+                else if(active_extruder == 1)
+                  WRITE(PISTON2, LOW);
+            }
               do_blocking_move_to_z(destination.z, planner.settings.max_feedrate_mm_s[Z_AXIS]);
             #endif
 

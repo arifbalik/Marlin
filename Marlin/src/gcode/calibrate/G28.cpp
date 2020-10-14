@@ -194,6 +194,8 @@
  *  Z   Home to the Z endstop
  */
 void GcodeSuite::G28() {
+  OUT_WRITE(PISTON1, HIGH);
+  OUT_WRITE(PISTON1, HIGH);
   DEBUG_SECTION(log_G28, "G28", DEBUGGING(LEVELING));
   if (DEBUGGING(LEVELING)) log_machine_info();
 

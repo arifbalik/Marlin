@@ -1282,7 +1282,8 @@ void setup() {
   #if ENABLED(PASSWORD_ON_STARTUP)
     SETUP_RUN(password.lock_machine());      // Will not proceed until correct password provided
   #endif
-
+  OUT_WRITE(PISTON1, HIGH);
+  OUT_WRITE(PISTON2, HIGH);
   marlin_state = MF_RUNNING;
 
   SETUP_LOG("setup() completed.");

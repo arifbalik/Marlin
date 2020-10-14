@@ -72,5 +72,12 @@ void GcodeSuite::T(const uint8_t tool_index) {
       (tool_index == active_extruder) || parser.boolval('S')
     );
 
+  if(TEST(axis_homed, X_AXIS) && TEST(axis_homed, Y_AXIS) && TEST(axis_homed, Z_AXIS)){
+                if(active_extruder == 0)
+                  WRITE(PISTON1, LOW);
+                else if(active_extruder == 1)
+                  WRITE(PISTON2, LOW);
+            }
+
   #endif
 }

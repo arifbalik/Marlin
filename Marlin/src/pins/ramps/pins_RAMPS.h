@@ -69,14 +69,14 @@
   #ifdef IS_RAMPS_13
     #define SERVO0_PIN                         7
   #else
-    #define SERVO0_PIN                        11
+    #define SERVO0_PIN                        4
   #endif
 #endif
 #ifndef SERVO1_PIN
-  #define SERVO1_PIN                           6
+  #define SERVO1_PIN                           5
 #endif
 #ifndef SERVO2_PIN
-  #define SERVO2_PIN                           5
+  #define SERVO2_PIN                           6
 #endif
 #ifndef SERVO3_PIN
   #define SERVO3_PIN                           4
@@ -161,13 +161,13 @@
 // Temperature Sensors
 //
 #ifndef TEMP_0_PIN
-  #define TEMP_0_PIN                          13  // Analog Input
+  #define TEMP_0_PIN                          5  // Analog Input
 #endif
 #ifndef TEMP_1_PIN
-  #define TEMP_1_PIN                          15  // Analog Input
+  #define TEMP_1_PIN                          14  // Analog Input
 #endif
 #ifndef TEMP_BED_PIN
-  #define TEMP_BED_PIN                        14  // Analog Input
+  #define TEMP_BED_PIN                        15  // Analog Input
 #endif
 
 //
@@ -658,12 +658,12 @@
 
     #elif ENABLED(MINIPANEL)
 
-      #define BEEPER_PIN                      42
+      #define BEEPER_PIN                      37
       // not connected to a pin
       #define LCD_BACKLIGHT_PIN               65  // backlight LED on A11/D65
 
-      #define DOGLCD_A0                       44
-      #define DOGLCD_CS                       66
+      #define DOGLCD_A0                       27
+      #define DOGLCD_CS                       25
 
       // GLCD features
       // Uncomment screen orientation
@@ -671,12 +671,12 @@
       //#define LCD_SCREEN_ROT_180
       //#define LCD_SCREEN_ROT_270
 
-      #define BTN_EN1                         40
-      #define BTN_EN2                         63
-      #define BTN_ENC                         59
+      #define BTN_EN1                         31
+      #define BTN_EN2                         33
+      #define BTN_ENC                         35
 
       #define SD_DETECT_PIN                   49
-      #define KILL_PIN                        64
+      #define KILL_PIN                        2
 
     #elif ENABLED(ZONESTAR_LCD)
 
@@ -773,3 +773,6 @@
   #define CLCD_MOD_RESET                      31
   #define CLCD_SPI_CS                         33
 #endif // TOUCH_UI_FTDI_EVE && LCD_FYSETC_TFT81050
+
+#define PISTON1 4
+#define PISTON2 5
