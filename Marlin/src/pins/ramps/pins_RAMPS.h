@@ -776,3 +776,6 @@
 
 #define PISTON1 4
 #define PISTON2 5
+
+#define SELENOID1 6
+#define SELENOID2 11

@@ -110,6 +110,8 @@ Stepper stepper; // Singleton
   #include "../feature/dac/dac_dac084s085.h"
 #endif
 
+#include "../gcode/control/M998.h"
+
 #if HAS_DIGIPOTSS
   #include <SPI.h>
 #endif
@@ -1524,6 +1526,16 @@ void Stepper::pulse_phase_isr() {
     if (current_block) discard_current_block();
   }
 
+  if ((current_block->steps[E_AXIS] > 0) && (!TEST(current_block->direction_bits, E_AXIS)) && pnue()) {
+        if(active_extruder == 0)
+				  OUT_WRITE(SELENOID1, LOW);
+        else if(active_extruder == 1)
+          OUT_WRITE(SELENOID2, LOW);
+			} else {
+			   OUT_WRITE(SELENOID1, HIGH);
+         OUT_WRITE(SELENOID2, HIGH);
+			}
+
   // If there is no current block, do nothing
   if (!current_block) return;
 
@@ -1994,6 +2006,9 @@ uint32_t Stepper::block_phase_isr() {
         if (!(current_block = planner.get_current_block()))
           return interval; // No more queued movements!
       }
+
+      // Extrusion on or off with given extruder.
+			
 
       // For non-inline cutter, grossly apply power
       #if ENABLED(LASER_FEATURE) && DISABLED(LASER_POWER_INLINE)

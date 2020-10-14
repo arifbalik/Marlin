@@ -325,6 +325,9 @@
       TERN_(HAS_MULTI_HOTEND, if (active_extruder) tool_change(0));
     }
 
+    OUT_WRITE(PISTON1, HIGH); 
+    OUT_WRITE(PISTON2, HIGH);
+
     // Invalidate Mesh Points. This command is a little bit asymmetrical because
     // it directly specifies the repetition count and does not use the 'R' parameter.
     if (parser.seen('I')) {

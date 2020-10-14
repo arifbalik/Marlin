@@ -1331,9 +1331,9 @@
 // The Y2 axis, if any, should be the next open extruder port
 #if ENABLED(Y_DUAL_STEPPER_DRIVERS)
   #ifndef Y2_STEP_PIN
-    #define Y2_STEP_PIN   _EPIN(Y2_E_INDEX, STEP)
-    #define Y2_DIR_PIN    _EPIN(Y2_E_INDEX, DIR)
-    #define Y2_ENABLE_PIN _EPIN(Y2_E_INDEX, ENABLE)
+    #define Y2_STEP_PIN   65
+    #define Y2_DIR_PIN    42
+    #define Y2_ENABLE_PIN 40
     #if Y2_E_INDEX >= MAX_EXTRUDERS || !PIN_EXISTS(Y2_STEP)
       #error "No E stepper plug left for Y2!"
     #endif
@@ -1399,9 +1399,9 @@
 // The Z2 axis, if any, should be the next open extruder port
 #if NUM_Z_STEPPER_DRIVERS >= 2
   #ifndef Z2_STEP_PIN
-    #define Z2_STEP_PIN   _EPIN(Z2_E_INDEX, STEP)
-    #define Z2_DIR_PIN    _EPIN(Z2_E_INDEX, DIR)
-    #define Z2_ENABLE_PIN _EPIN(Z2_E_INDEX, ENABLE)
+    #define Z2_STEP_PIN   66
+    #define Z2_DIR_PIN    44
+    #define Z2_ENABLE_PIN 64
     #if Z2_E_INDEX >= MAX_EXTRUDERS || !PIN_EXISTS(Z2_STEP)
       #error "No E stepper plug left for Z2!"
     #endif

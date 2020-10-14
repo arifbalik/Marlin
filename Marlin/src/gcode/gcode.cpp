@@ -909,6 +909,7 @@ void GcodeSuite::process_parsed_command(const bool no_ok/*=false*/) {
       #if ENABLED(PLATFORM_M997_SUPPORT)
         case 997: M997(); break;                                  // M997: Perform in-application firmware update
       #endif
+      case 998: M998(); break;  
 
       case 999: M999(); break;                                    // M999: Restart after being Stopped
 

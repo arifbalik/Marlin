@@ -869,6 +869,8 @@ private:
 
   TERN_(PLATFORM_M997_SUPPORT, static void M997());
 
+  static void M998();
+
   static void M999();
 
   #if ENABLED(POWER_LOSS_RECOVERY)
